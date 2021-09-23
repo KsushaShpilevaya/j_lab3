@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- singleton - сколько бы раз мы ни брали объект класса (если scope ="singleton"),
+     то он будет одним и тем же -->
+    <bean id="celsiusConverter" scope="singleton" class="ru.converter.CelsiusToCelsiusConverter" />
+    <bean id="fahrenheitConverter" scope="singleton" class="ru.converter.CelsiusToFahrenheitConverter"/>
+    <bean id="kelvinConverter" scope="singleton" class="ru.converter.CelsiusToKelvinConverter"/>
+    <!-- scope="prototype" - при создании такого объекта, будет создаваться каждый раз разные
+     объекты-->
+    <bean id="localeStatic" scope="prototype" class="java.util.Locale" factory-method="getDefault"/>
+    <bean id="converterFactory" scope="singleton" class="ConverterFactory"/>
+</beans>
